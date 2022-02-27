@@ -10,11 +10,9 @@ import { InfoModal } from './components/modals/InfoModal'
 import { StatsModal } from './components/modals/StatsModal'
 import { SettingsModal } from './components/modals/SettingsModal'
 import {
-  GAME_TITLE,
   WIN_MESSAGES,
   GAME_COPIED_MESSAGE,
   NOT_ENOUGH_LETTERS_MESSAGE,
-  WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
   HARD_MODE_ALERT_MESSAGE,
 } from './constants/strings'
@@ -26,7 +24,6 @@ import {
   WELCOME_INFO_MODAL_MS,
 } from './constants/settings'
 import {
-  isWordInWordList,
   isWinningWord,
   solution,
   findFirstUnusedReveal,
@@ -45,11 +42,10 @@ import './App.css'
 import { AlertContainer } from './components/alerts/AlertContainer'
 import { useAlert } from './context/AlertContext'
 
-function App() {
-  const prefersDarkMode = window.matchMedia(
-    '(prefers-color-scheme: dark)'
-  ).matches
+const Chance = require('chance')
+const contrast = require('contrast')
 
+function App() {
   const { showError: showErrorAlert, showSuccess: showSuccessAlert } =
     useAlert()
   const [currentGuess, setCurrentGuess] = useState('')
@@ -59,13 +55,7 @@ function App() {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false)
   const [currentRowClass, setCurrentRowClass] = useState('')
   const [isGameLost, setIsGameLost] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(
-    localStorage.getItem('theme')
-      ? localStorage.getItem('theme') === 'dark'
-      : prefersDarkMode
-      ? true
-      : false
-  )
+  const [isDarkMode, setIsDarkMode] = useState(true)
   const [isHighContrastMode, setIsHighContrastMode] = useState(
     getStoredIsHighContrastMode()
   )
@@ -95,6 +85,9 @@ function App() {
       ? localStorage.getItem('gameMode') === 'hard'
       : false
   )
+
+  const chance = new Chance(new Date(Date.now()).toLocaleDateString())
+  const winningColorCode = chance.color({ format: 'hex' })
 
   useEffect(() => {
     // if no game state on load,
@@ -194,13 +187,6 @@ function App() {
       })
     }
 
-    if (!isWordInWordList(currentGuess)) {
-      setCurrentRowClass('jiggle')
-      return showErrorAlert(WORD_NOT_FOUND_MESSAGE, {
-        onClose: clearCurrentRowClass,
-      })
-    }
-
     // enforce hard mode - all guesses must contain all previously revealed letters
     if (isHardMode) {
       const firstMissingReveal = findFirstUnusedReveal(currentGuess, guesses)
@@ -246,21 +232,36 @@ function App() {
   }
 
   return (
-    <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div className="flex w-80 mx-auto items-center mb-8 mt-20">
+    <div
+      className={`pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8 bg-[${winningColorCode}] h-screen`}
+    >
+      <div className="flex w-80 mx-auto items-center mb-10 mt-4">
         <h1 className="text-xl ml-2.5 grow font-bold dark:text-white">
-          {GAME_TITLE}
+          <span className="rainbow-red">C</span>
+          <span className="rainbow-orange">o</span>
+          <span className="rainbow-yellow">l</span>
+          <span className="rainbow-green">o</span>
+          <span className="rainbow-blue">r</span>
+          <span className="rainbow-indigo">d</span>
+          <span className="rainbow-black">l</span>
+          <span className="rainbow-brown">e</span>
         </h1>
         <InformationCircleIcon
-          className="h-6 w-6 mr-2 cursor-pointer dark:stroke-white"
+          className={`h-6 w-6 mr-2 cursor-pointer ${
+            contrast(winningColorCode) === 'light' ? '' : 'dark:stroke-white'
+          }`}
           onClick={() => setIsInfoModalOpen(true)}
         />
         <ChartBarIcon
-          className="h-6 w-6 mr-3 cursor-pointer dark:stroke-white"
+          className={`h-6 w-6 mr-2 cursor-pointer ${
+            contrast(winningColorCode) === 'light' ? '' : 'dark:stroke-white'
+          }`}
           onClick={() => setIsStatsModalOpen(true)}
         />
         <CogIcon
-          className="h-6 w-6 mr-3 cursor-pointer dark:stroke-white"
+          className={`h-6 w-6 mr-2 cursor-pointer ${
+            contrast(winningColorCode) === 'light' ? '' : 'dark:stroke-white'
+          }`}
           onClick={() => setIsSettingsModalOpen(true)}
         />
       </div>

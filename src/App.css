@@ -1,3 +1,34 @@
 html.dark {
-  background-color: rgb(15, 23, 42);
+}
+
+.rainbow-red {
+  color: #ff0800;
+}
+
+.rainbow-orange {
+  color: #ff7700;
+}
+
+.rainbow-yellow {
+  color: #ffcc00;
+}
+
+.rainbow-green {
+  color: #009900;
+}
+
+.rainbow-blue {
+  color: #0066cc;
+}
+
+.rainbow-indigo {
+  color: #4b0082;
+}
+
+.rainbow-black {
+  color: #000000;
+}
+
+.rainbow-brown {
+  color: #613613;
 }
