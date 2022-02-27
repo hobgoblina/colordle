@@ -86,7 +86,7 @@ function App() {
       : false
   )
 
-  const chance = new Chance(new Date(Date.now()).toLocaleDateString())
+  const chance = new Chance(new Date(Date.now()).toLocaleDateString('en'))
   const winningColorCode = chance.color({ format: 'hex' })
 
   useEffect(() => {
