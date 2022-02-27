@@ -232,82 +232,80 @@ function App() {
   }
 
   return (
-    <div
-      className={
-        'pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8 h-screen bg-winner'
-      }
-    >
-      <div className="flex w-80 mx-auto items-center mb-10 mt-4">
-        <h1 className="text-xl ml-2.5 grow font-bold dark:text-white">
-          <span className="rainbow-red">C</span>
-          <span className="rainbow-orange">o</span>
-          <span className="rainbow-yellow">l</span>
-          <span className="rainbow-green">o</span>
-          <span className="rainbow-blue">r</span>
-          <span className="rainbow-indigo">d</span>
-          <span className="rainbow-black">l</span>
-          <span className="rainbow-brown">e</span>
-        </h1>
-        <InformationCircleIcon
-          className={`h-6 w-6 mr-2 cursor-pointer ${
-            contrast(winningColorCode) === 'light' ? '' : 'dark:stroke-white'
-          }`}
-          onClick={() => setIsInfoModalOpen(true)}
+    <div style={{ background: winningColorCode }}>
+      <div className={'pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8 h-screen'}>
+        <div className="flex w-80 mx-auto items-center mb-10 mt-4">
+          <h1 className="text-xl ml-2.5 grow font-bold dark:text-white">
+            <span className="rainbow-red">C</span>
+            <span className="rainbow-orange">o</span>
+            <span className="rainbow-yellow">l</span>
+            <span className="rainbow-green">o</span>
+            <span className="rainbow-blue">r</span>
+            <span className="rainbow-indigo">d</span>
+            <span className="rainbow-black">l</span>
+            <span className="rainbow-brown">e</span>
+          </h1>
+          <InformationCircleIcon
+            className={`h-6 w-6 mr-2 cursor-pointer ${
+              contrast(winningColorCode) === 'light' ? '' : 'dark:stroke-white'
+            }`}
+            onClick={() => setIsInfoModalOpen(true)}
+          />
+          <ChartBarIcon
+            className={`h-6 w-6 mr-2 cursor-pointer ${
+              contrast(winningColorCode) === 'light' ? '' : 'dark:stroke-white'
+            }`}
+            onClick={() => setIsStatsModalOpen(true)}
+          />
+          <CogIcon
+            className={`h-6 w-6 mr-2 cursor-pointer ${
+              contrast(winningColorCode) === 'light' ? '' : 'dark:stroke-white'
+            }`}
+            onClick={() => setIsSettingsModalOpen(true)}
+          />
+        </div>
+        <Grid
+          guesses={guesses}
+          currentGuess={currentGuess}
+          isRevealing={isRevealing}
+          currentRowClassName={currentRowClass}
         />
-        <ChartBarIcon
-          className={`h-6 w-6 mr-2 cursor-pointer ${
-            contrast(winningColorCode) === 'light' ? '' : 'dark:stroke-white'
-          }`}
-          onClick={() => setIsStatsModalOpen(true)}
+        <Keyboard
+          onChar={onChar}
+          onDelete={onDelete}
+          onEnter={onEnter}
+          guesses={guesses}
+          isRevealing={isRevealing}
         />
-        <CogIcon
-          className={`h-6 w-6 mr-2 cursor-pointer ${
-            contrast(winningColorCode) === 'light' ? '' : 'dark:stroke-white'
-          }`}
-          onClick={() => setIsSettingsModalOpen(true)}
+        <InfoModal
+          isOpen={isInfoModalOpen}
+          handleClose={() => setIsInfoModalOpen(false)}
         />
-      </div>
-      <Grid
-        guesses={guesses}
-        currentGuess={currentGuess}
-        isRevealing={isRevealing}
-        currentRowClassName={currentRowClass}
-      />
-      <Keyboard
-        onChar={onChar}
-        onDelete={onDelete}
-        onEnter={onEnter}
-        guesses={guesses}
-        isRevealing={isRevealing}
-      />
-      <InfoModal
-        isOpen={isInfoModalOpen}
-        handleClose={() => setIsInfoModalOpen(false)}
-      />
-      <StatsModal
-        isOpen={isStatsModalOpen}
-        handleClose={() => setIsStatsModalOpen(false)}
-        guesses={guesses}
-        gameStats={stats}
-        isGameLost={isGameLost}
-        isGameWon={isGameWon}
-        handleShare={() => showSuccessAlert(GAME_COPIED_MESSAGE)}
-        isHardMode={isHardMode}
-        isDarkMode={isDarkMode}
-        isHighContrastMode={isHighContrastMode}
-      />
-      <SettingsModal
-        isOpen={isSettingsModalOpen}
-        handleClose={() => setIsSettingsModalOpen(false)}
-        isHardMode={isHardMode}
-        handleHardMode={handleHardMode}
-        isDarkMode={isDarkMode}
-        handleDarkMode={handleDarkMode}
-        isHighContrastMode={isHighContrastMode}
-        handleHighContrastMode={handleHighContrastMode}
-      />
+        <StatsModal
+          isOpen={isStatsModalOpen}
+          handleClose={() => setIsStatsModalOpen(false)}
+          guesses={guesses}
+          gameStats={stats}
+          isGameLost={isGameLost}
+          isGameWon={isGameWon}
+          handleShare={() => showSuccessAlert(GAME_COPIED_MESSAGE)}
+          isHardMode={isHardMode}
+          isDarkMode={isDarkMode}
+          isHighContrastMode={isHighContrastMode}
+        />
+        <SettingsModal
+          isOpen={isSettingsModalOpen}
+          handleClose={() => setIsSettingsModalOpen(false)}
+          isHardMode={isHardMode}
+          handleHardMode={handleHardMode}
+          isDarkMode={isDarkMode}
+          handleDarkMode={handleDarkMode}
+          isHighContrastMode={isHighContrastMode}
+          handleHighContrastMode={handleHighContrastMode}
+        />
 
-      <AlertContainer />
+        <AlertContainer />
+      </div>
     </div>
   )
 }
