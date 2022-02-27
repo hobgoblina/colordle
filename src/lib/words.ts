@@ -73,7 +73,7 @@ export const getWordOfDay = () => {
   const index = Math.floor((now - epochMs) / msInDay)
   const nextday = (index + 1) * msInDay + epochMs
 
-  const chance = new Chance(new Date(Date.now()).toLocaleDateString());
+  const chance = new Chance(new Date(Date.now()).toLocaleDateString('en'));
   const winningColorCode = chance.color({ format: 'hex' }).slice(1);
 
   return {
