@@ -1,7 +1,9 @@
 # Colordle
 
 A silly spin on the popular word guessing game, forked from [Reactle](https://reactle.vercel.app/).
-## Build and run
+## Build and run 
+
+[Try it out!](https://colordle.vercel.app/)
 
 ### To Run Locally:
 
