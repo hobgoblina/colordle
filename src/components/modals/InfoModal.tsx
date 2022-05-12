@@ -1,5 +1,6 @@
 import { Cell } from '../grid/Cell'
 import { BaseModal } from './BaseModal'
+import { CompletedRow } from '../grid/CompletedRow'
 
 type Props = {
   isOpen: boolean
@@ -59,6 +60,13 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         The digit 4 is not in the color code in any spot.
+      </p>
+
+      <div className="flex justify-center mb-1 mt-4">
+        <CompletedRow guess="E31A9B" isInfoModal />
+      </div>
+      <p className="text-sm text-gray-500 dark:text-gray-300">
+        Tap on your guesses to reveal their colors!
       </p>
 
       <p className="mt-6 italic text-sm text-gray-500 dark:text-gray-300">

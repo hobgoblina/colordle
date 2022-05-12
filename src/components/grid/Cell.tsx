@@ -9,6 +9,10 @@ type Props = {
   isRevealing?: boolean
   isCompleted?: boolean
   position?: number
+  guess?: string
+  toggleColorReveal?: () => void
+  showColor?: boolean
+  flipping?: boolean
 }
 
 export const Cell = ({
@@ -17,10 +21,14 @@ export const Cell = ({
   isRevealing,
   isCompleted,
   position = 0,
+  guess,
+  toggleColorReveal,
+  showColor,
+  flipping
 }: Props) => {
   const isFilled = value && !isCompleted
   const shouldReveal = isRevealing && isCompleted
-  const animationDelay = `${position * REVEAL_TIME_MS}ms`
+  let animationDelay = `${position * (flipping ? 0 : REVEAL_TIME_MS)}ms`
   const isHighContrast = getStoredIsHighContrastMode()
 
   const classes = classnames(
@@ -45,9 +53,18 @@ export const Cell = ({
   )
 
   return (
-    <div className={classes} style={{ animationDelay }}>
-      <div className="letter-container" style={{ animationDelay }}>
-        {value}
+    <div onClick={toggleColorReveal} style={{ cursor: 'pointer' }}>
+      <div 
+        className={classes} 
+        style={
+          (isCompleted && showColor) 
+            ? { background: `#${guess}`, border: 'none' } 
+            : { animationDelay }
+        }
+      >
+        <div className="letter-container" style={{ animationDelay }}>
+          {isCompleted && showColor ? '' : value}
+        </div>
       </div>
     </div>
   )
