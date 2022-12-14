@@ -1,6 +1,6 @@
 export const GAME_TITLE = process.env.REACT_APP_GAME_NAME!
 
-export const WIN_MESSAGES = ['Hextastic!', 'Color me impressed!', 'Holy #fffuck, you got it!']
+export const WIN_MESSAGES = ['Hextastic!', 'Color me impressed!', 'Beautiful!']
 export const GAME_COPIED_MESSAGE = 'Game copied to clipboard'
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Not enough digits'
 export const WORD_NOT_FOUND_MESSAGE = 'Color not found'
