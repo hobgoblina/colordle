@@ -1,48 +1,30 @@
-import { getGuessStatuses } from './statuses'
-import { solutionIndex } from './words'
 import { GAME_TITLE } from '../constants/strings'
-import { MAX_CHALLENGES } from '../constants/settings'
+import { solution } from './words'
+
+import nearestColor from 'nearest-color';
+import colorNameList from 'color-name-list';
+const colors = colorNameList.reduce((o, { name, hex }) => Object.assign(o, { [name]: hex }), {});
+const nearest = nearestColor.from(colors);
 
 export const shareStatus = (
   guesses: string[],
-  lost: boolean,
-  isHardMode: boolean,
-  isDarkMode: boolean,
-  isHighContrastMode: boolean
+  lost: boolean
 ) => {
+  const target = nearest(`#${solution}`).name;
+
   navigator.clipboard.writeText(
-    `${GAME_TITLE} ${solutionIndex} ${
-      lost ? 'X' : guesses.length
-    }/${MAX_CHALLENGES}${isHardMode ? '*' : ''}\n\n` +
-      generateEmojiGrid(guesses, getEmojiTiles(isDarkMode, isHighContrastMode))
+    `An image depicting the outcome of a ${GAME_TITLE} game, with ${guesses.length} different-colored squares on a background the color of ${target}.\n\nGuess colors:\n${generateColorDescriptions(guesses, lost, target)}`
   )
 }
 
-export const generateEmojiGrid = (guesses: string[], tiles: string[]) => {
+export const generateColorDescriptions = (guesses: string[], lost: boolean, target: string) => {
+  const previous = [];
   return guesses
-    .map((guess) => {
-      const status = getGuessStatuses(guess)
-      return guess
-        .split('')
-        .map((_, i) => {
-          switch (status[i]) {
-            case 'correct':
-              return tiles[0]
-            case 'present':
-              return tiles[1]
-            default:
-              return tiles[2]
-          }
-        })
-        .join('')
+    .map((guess, index) => {
+      const name = nearest(`#${guess}`).name;
+      const text = `${index + 1}: ${guesses.includes(name) ? '(another) ' : ''}${name}${target === name && guess !== solution ? ' (slightly off-target)' : ''}`;
+      previous.push(name);
+      return text;
     })
     .join('\n')
-}
-
-const getEmojiTiles = (isDarkMode: boolean, isHighContrastMode: boolean) => {
-  let tiles: string[] = []
-  tiles.push(isHighContrastMode ? '🟧' : '🟩')
-  tiles.push(isHighContrastMode ? '🟦' : '🟨')
-  tiles.push(isDarkMode ? '⬛' : '⬜')
-  return tiles
 }

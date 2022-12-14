@@ -32,10 +32,7 @@ export const StatsModal = ({
   gameStats,
   isGameLost,
   isGameWon,
-  handleShare,
-  isHardMode,
-  isDarkMode,
-  isHighContrastMode,
+  handleShare
 }: Props) => {
   if (gameStats.totalGames <= 0) {
     return (
@@ -75,10 +72,7 @@ export const StatsModal = ({
             onClick={() => {
               shareStatus(
                 guesses,
-                isGameLost,
-                isHardMode,
-                isDarkMode,
-                isHighContrastMode
+                isGameLost
               )
               handleShare()
             }}
