@@ -11,7 +11,7 @@ A colorful/silly spin on the popular word guessing game, forked from [Reactle](h
 Clone the repository and perform the following command line actions:
 
 ```bash
-$> cd react-wordle
+$> cd colordle
 $> npm install
 $> npm run start
 ```
