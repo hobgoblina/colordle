@@ -1,5 +1,7 @@
 import { GAME_TITLE } from '../constants/strings'
 import { solution } from './words'
+import { toPng } from 'html-to-image';
+import download from 'downloadjs';
 
 import { nearestFrom } from 'nearest-colors';
 import colorNameList from 'color-name-list';
@@ -16,6 +18,18 @@ export const shareStatus = (
   navigator.clipboard.writeText(
     `An image depicting the outcome of a ${GAME_TITLE} game, with ${guesses.length} different-colored squares on a background the color of ${target}.\n\nGuess colors:\n${generateColorDescriptions(guesses, lost, target)}`
   )
+}
+
+export const shareImage = () => {
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  let mm = today.getMonth() + 1; // Months start at 0!
+  let dd = today.getDate();
+  const node = document.getElementById('result-image');
+
+  if (node) {
+    toPng(node, { pixelRatio: 1.2 }).then(dataUrl => download(dataUrl, `colordle_${dd}-${mm}-${yyyy}.png`));
+  }
 }
 
 export const generateColorDescriptions = (guesses: string[], lost: boolean, target: string) => {

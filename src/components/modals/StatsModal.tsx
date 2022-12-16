@@ -2,8 +2,12 @@ import Countdown from 'react-countdown'
 import { StatBar } from '../stats/StatBar'
 import { Histogram } from '../stats/Histogram'
 import { GameStats } from '../../lib/localStorage'
-import { shareStatus } from '../../lib/share'
-import { tomorrow } from '../../lib/words'
+import { shareStatus, shareImage } from '../../lib/share'
+import { tomorrow, solution } from '../../lib/words'
+import {
+  ClipboardCopyIcon,
+  DownloadIcon,
+} from '@heroicons/react/outline'
 import { BaseModal } from './BaseModal'
 import {
   STATISTICS_TITLE,
@@ -57,7 +61,7 @@ export const StatsModal = ({
       </h4>
       <Histogram gameStats={gameStats} />
       {(isGameLost || isGameWon) && (
-        <div className="mt-5 sm:mt-6 columns-2 dark:text-white">
+        <div className="mt-5 sm:mt-6 mb-5 sm:mb-6 columns-2 dark:text-white">
           <div>
             <h5>{NEW_WORD_TEXT}</h5>
             <Countdown
@@ -66,19 +70,44 @@ export const StatsModal = ({
               daysInHours={true}
             />
           </div>
-          <button
-            type="button"
-            className="mt-2 w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
-            onClick={() => {
-              shareStatus(
-                guesses,
-                isGameLost
-              )
-              handleShare()
-            }}
-          >
-            {SHARE_TEXT}
-          </button>
+          <div className="columns-2">
+            <button
+              type="button"
+              className="mt-2 w-max rounded-md border border-transparent shadow-sm px-5 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+              onClick={() => {
+                shareStatus(
+                  guesses,
+                  isGameLost
+                )
+                handleShare()
+              }}
+            >
+              <ClipboardCopyIcon className='w-6 h-6' />
+            </button>
+            <button
+              type="button"
+              className="mt-2 w-max rounded-md border border-transparent shadow-sm px-5 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+              onClick={() => {
+                shareImage()
+              }}
+            >
+              <DownloadIcon className='w-6 h-6' />
+            </button>
+          </div>
+        </div>
+      )}
+      {(isGameLost || isGameWon) && (
+        <div 
+          id="result-image" 
+          className="flex mx-auto space-x-1 w-max max-w-full p-2 rounded" 
+          style={{ background: `#${solution}` }}
+        >
+          {guesses.map((guess) => (
+            <div 
+              className="flex shrink aspect-square w-14 max-w-14 rounded" 
+              style={{ background: `#${guess}` }}
+            ></div>
+          ))}
         </div>
       )}
     </BaseModal>

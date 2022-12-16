@@ -13,6 +13,7 @@ type Props = {
   toggleColorReveal?: () => void
   showColor?: boolean
   flipping?: boolean
+  display?: boolean
 }
 
 export const Cell = ({
@@ -24,7 +25,8 @@ export const Cell = ({
   guess,
   toggleColorReveal,
   showColor,
-  flipping
+  flipping,
+  display
 }: Props) => {
   const isFilled = value && !isCompleted
   const shouldReveal = isRevealing && isCompleted
@@ -57,13 +59,13 @@ export const Cell = ({
       <div 
         className={classes} 
         style={
-          (isCompleted && showColor) 
+          ((isCompleted && showColor) || display) 
             ? { background: `#${guess}`, border: 'none' } 
             : { animationDelay }
         }
       >
         <div className="letter-container" style={{ animationDelay }}>
-          {isCompleted && showColor ? '' : value}
+          {(isCompleted && showColor) || display ? '' : value}
         </div>
       </div>
     </div>
