@@ -97,17 +97,19 @@ export const StatsModal = ({
         </div>
       )}
       {(isGameLost || isGameWon) && (
-        <div 
-          id="result-image" 
-          className="flex mx-auto space-x-1 w-max max-w-full p-2 rounded" 
-          style={{ background: `#${solution}` }}
-        >
-          {guesses.map((guess) => (
-            <div 
-              className="flex shrink aspect-square w-14 max-w-14 rounded" 
-              style={{ background: `#${guess}` }}
-            ></div>
-          ))}
+        <div className="mx-auto w-max">
+          <div 
+            id="result-image" 
+            className="flex space-x-1 w-max max-w-full p-2 rounded" 
+            style={{ background: `#${solution}` }}
+          >
+            {guesses.map((guess) => (
+              <div 
+                className="flex shrink aspect-square w-14 max-w-14 rounded" 
+                style={{ background: `#${guess}` }}
+              ></div>
+            ))}
+          </div>
         </div>
       )}
     </BaseModal>
