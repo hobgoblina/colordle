@@ -97,7 +97,7 @@ export const StatsModal = ({
         </div>
       )}
       {(isGameLost || isGameWon) && (
-        <div className="mx-auto w-max">
+        <div className="mx-auto w-max max-w-full">
           <div 
             id="result-image" 
             className="flex space-x-1 w-max max-w-full p-3 rounded-lg" 
