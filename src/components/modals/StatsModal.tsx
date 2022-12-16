@@ -100,7 +100,7 @@ export const StatsModal = ({
         <div className="mx-auto w-max">
           <div 
             id="result-image" 
-            className="flex space-x-1 w-max max-w-full p-2 rounded" 
+            className="flex space-x-1 w-max max-w-full p-3 rounded-lg" 
             style={{ background: `#${solution}` }}
           >
             {guesses.map((guess) => (
