@@ -42,7 +42,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           value="F"
           status="present"
         />
-        <Cell value="O" />
+        <Cell value="0" />
         <Cell value="2" />
         <Cell value="B" />
       </div>
