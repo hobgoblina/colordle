@@ -1,4 +1,3 @@
-import { GAME_TITLE } from '../constants/strings'
 import { solution } from './words'
 import { toPng } from 'html-to-image';
 import download from 'downloadjs';

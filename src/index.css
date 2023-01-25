@@ -183,3 +183,7 @@ svg:hover {
     transform: translate(0, 0);
   }
 }
+
+a.masto-link {
+  display: none;
+}

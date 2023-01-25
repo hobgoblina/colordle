@@ -306,6 +306,9 @@ function App() {
 
         <AlertContainer />
       </div>
+      <a className="masto-link" rel="me" href="https://neuromatch.social/@lina">
+        Find me on Mastodon
+      </a>
     </div>
   )
 }
