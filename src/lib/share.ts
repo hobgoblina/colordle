@@ -15,7 +15,7 @@ export const shareStatus = (
   const target = Array.isArray(closest) ? closest[0].name : closest.name;
 
   navigator.clipboard.writeText(
-    `Colordle game results!\n(${guesses.length} different-colored squares on a background the color of ${target})\n\nGuessed colors:\n${generateColorDescriptions(guesses, lost, target)}\n\nVisit colordle.vercel.app to play!`
+    `Colordle game results!\n(${guesses.length} different-colored squares on a background the color of ${target})\n\nGuessed colors:\n${generateColorDescriptions(guesses, lost, target)}\n\nVisit colordle.lina.garden to play!`
   )
 }
 

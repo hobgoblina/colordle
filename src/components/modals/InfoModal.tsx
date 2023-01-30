@@ -70,7 +70,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </p>
 
       <p className="mt-6 italic text-sm text-gray-500 dark:text-gray-300">
-        A silly spin on the popular word guessing game
+        A colorful spin on the popular word guessing game
       </p>
       <p className="mt-2 italic text-sm text-gray-500 dark:text-gray-300">
         <a
