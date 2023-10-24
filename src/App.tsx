@@ -255,7 +255,7 @@ function App() {
         to play the game.
       </div>
       <div>
-        Black, trans, disabled, & palestinian lives matter. All cops are
+        Black, indigenous, trans, disabled, & palestinian lives matter. All cops are
         bastards. Landlords are leeches. Capitalism is cancer. Google Murray
         Bookchin.
       </div>
