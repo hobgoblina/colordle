@@ -231,9 +231,38 @@ function App() {
     }
   }
 
-  return (
+  return window.self !== window.top ? (
+    <div className="bg-red-700 flex-col between-4 min-h-screen h-max text-center font-bold text-white align-bottom flex place-content-center p-10">
+      <div className="mb-6">
+        This website is attempting to use this game without permission. They are
+        likely trying to monetize the efforts of myself and others by
+        surrounding games like this with ads and other anti-features that may
+        pose a security risk to you.
+      </div>
+      <div className="mb-6">
+        Well, fuck that and fuck them. You deserve a non-enshittified
+        experience, and they don't deserve to profit off of other people's work.
+      </div>
+      <div className="mb-6">
+        Visit{' '}
+        <a
+          href="https://colordle.lina.garden"
+          className="text-blue-400"
+          target="_top"
+        >
+          colordle.lina.garden
+        </a>{' '}
+        to play the game.
+      </div>
+      <div>
+        Black, trans, disabled, & palestinian lives matter. All cops are
+        bastards. Landlords are leeches. Capitalism is cancer. Google Murray
+        Bookchin.
+      </div>
+    </div>
+  ) : (
     <div style={{ background: winningColorCode }}>
-      <div className={'pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8 h-screen'}>
+      <div className="pt-2 pb-8 max-w-7xl mx-auto sm:px-6 lg:px-8 h-screen">
         <div className="flex w-80 mx-auto items-center mb-10 mt-4">
           <h1 className="text-xl ml-2.5 grow font-bold dark:text-white">
             <span className="rainbow-red">C</span>
