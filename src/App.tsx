@@ -255,8 +255,8 @@ function App() {
         to play the game.
       </div>
       <div>
-        Black, indigenous, trans, disabled, & palestinian lives matter. All cops are
-        bastards. Landlords are leeches. Capitalism is cancer. Google Murray
+        Black, indigenous, trans, disabled, & palestinian lives matter. All cops
+        are bastards. Landlords are leeches. Capitalism is cancer. Google Murray
         Bookchin.
       </div>
     </div>
@@ -335,9 +335,6 @@ function App() {
 
         <AlertContainer />
       </div>
-      <a className="masto-link" rel="me" href="https://neuromatch.social/@lina">
-        Find me on Mastodon
-      </a>
     </div>
   )
 }
