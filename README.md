@@ -2,7 +2,7 @@
 
 A colorful spin on the popular word guessing game, forked from [Reactle](https://reactle.vercel.app/).
 
-[Try it out!](https://colordle.lina.garden/)
+### [Try it out!](https://colordle.lina.garden/)
 
 ## Build and run 
 
