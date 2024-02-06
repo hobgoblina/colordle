@@ -74,7 +74,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </p>
       <p className="mt-2 italic text-sm text-gray-500 dark:text-gray-300">
         <a
-          href="https://github.com/necropolina/colordle"
+          href="https://github.com/hobgoblina/colordle"
           className="underline font-bold"
         >
           made by Lina
