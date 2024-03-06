@@ -78,13 +78,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           className="underline font-bold"
         >
           made by Lina
-        </a>{' '}-{' '}
-        <a
-          href="https://github.com/cwackerfuss/react-wordle"
-          className="underline font-bold"
-        >
-          forked from reactle
-        </a>{' '}
+        </a>
       </p>
     </BaseModal>
   )
