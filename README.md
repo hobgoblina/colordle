@@ -1,6 +1,6 @@
 # Colordle
 
-A colorful spin on the popular word guessing game, forked from [Reactle](https://reactle.vercel.app/).
+A colorful spin on the popular word guessing game. Made with React, Typescript, and Tailwind CSS.
 
 ### [Try it out!](https://colordle.lina.garden/)
 
