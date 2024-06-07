@@ -1,6 +1,6 @@
 import { solution } from './words'
 import { toPng } from 'html-to-image';
-import download from 'downloadjs';
+import { saveAs } from 'file-saver';
 
 import { nearestFrom } from 'nearest-colors';
 import colorNameList from 'color-name-list';
@@ -27,7 +27,7 @@ export const shareImage = () => {
   const node = document.getElementById('result-image');
 
   if (node) {
-    toPng(node, { pixelRatio: 1.2 }).then(dataUrl => download(dataUrl, `colordle_${dd}-${mm}-${yyyy}.png`));
+    toPng(node, { pixelRatio: 1.2 }).then(dataUrl => saveAs(dataUrl, `colordle_${dd}-${mm}-${yyyy}.png`));
   }
 }
 
