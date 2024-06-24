@@ -74,6 +74,13 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
       </p>
       <p className="mt-2 italic text-sm text-gray-500 dark:text-gray-300">
         <a
+          href="https://www.404media.co/nytimes-files-copyright-takedowns-against-hundreds-of-wordle-clones/"
+          className="underline font-bold"
+        >
+          forked from Reactle
+        </a>
+        {" - "}
+        <a
           href="https://github.com/hobgoblina/colordle"
           className="underline font-bold"
         >
